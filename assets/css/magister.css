@@ -576,3 +576,15 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 #contact{
 	    padding-top: 0px !important;
 }
+
+.acercade{
+	    background-color: rgba(143, 191, 88, 0.42);
+    border-radius: 15px;
+}
+
+.contact-map{
+	border: 0;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-right: 23px;
+}

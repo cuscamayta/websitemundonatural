@@ -6,21 +6,47 @@ var section_hide_time = 1300;
 var section_show_time = 1300;
 
 // jQuery stuff
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
 
+	$('.overlay-content a').click(function () {
+		$('#overlay-menu').height('0%');
+		$('.fa-navicon').show();
+		$('.fa-times').hide();
+	})
+
+	$('.fa-navicon').click(function () {
+		$(this).hide();
+		$('.fa-times').show();
+		$('#overlay-menu').height('100%');
+		$('#overlay-menu').width('100%');
+	})
+
+	$('.fa-times').click(function () {
+		$(this).hide();
+		$('.fa-navicon').show();
+		$('#overlay-menu').height('0%');
+	})
+
+	$('.overlay-content a').click(function () {
+		current_item = this;
+		$('.section:visible').fadeOut(section_hide_time, function () {			
+			var new_section = $($(current_item).attr('href'));
+			new_section.fadeIn(section_show_time);
+		});
+	})
 	// Switch section
-	$("a", '.mainmenu').click(function() 
-	{
-		if( ! $(this).hasClass('active') ) { 
-			current_item = this;
-			// close all visible divs with the class of .section
-			$('.section:visible').fadeOut( section_hide_time, function() { 
-				$('a', '.mainmenu').removeClass( 'active' );  
-				$(current_item).addClass( 'active' );
-				var new_section = $( $(current_item).attr('href') );
-				new_section.fadeIn( section_show_time );
-			} );
-		}
-		return false;
-	});		
+	// $("a", '.mainmenu').click(function() 
+	// {
+	// 	if( ! $(this).hasClass('active') ) { 
+	// 		current_item = this;
+	// 		// close all visible divs with the class of .section
+	// 		$('.section:visible').fadeOut( section_hide_time, function() { 
+	// 			$('a', '.mainmenu').removeClass( 'active' );  
+	// 			$(current_item).addClass( 'active' );
+	// 			var new_section = $( $(current_item).attr('href') );
+	// 			new_section.fadeIn( section_show_time );
+	// 		} );
+	// 	}
+	// 	return false;
+	// });		
 });
